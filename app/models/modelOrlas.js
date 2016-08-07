@@ -1,16 +1,12 @@
 var mongoose = require('mongoose'),
-	Schema = mongoose.Schema
+    Schema = mongoose.Schema
 
 module.exports = function (app) {
-	var orlaSchema = Schema({
-		orla_nome: String,
-		orla:[{ type: Schema.Types.ObjectId, ref: 'Cidades' }]
-	});
+    var orlaSchema = Schema({
+        orla_nome: [{ type: Schema.Types.ObjectId, ref: 'Cidades' }]
+    });
 
-	mongoose.set("debug", true);
-	return mongoose.model("orlas", orlaSchema);
+    mongoose.set("debug", true);
+    return mongoose.model("Orlas", orlaSchema);
 
-	// var Estados = mongoose.model("Estados", estadoSchema);
-	// var Cidades = mongoose.model("Cidades", cidadeSchema);
-	// var Orlas = mongoose.model("Orlas", orlaSchema);
 };
