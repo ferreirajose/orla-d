@@ -1,0 +1,25 @@
+{
+  "name": "orla-digital",
+  "description": "localização de bares e restaurantes",
+  "main": "index.js",
+  "authors": [
+    "José Ferreira da Silva"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "js",
+    "node",
+    "mongodb"
+  ],
+  "homepage": "https://github.com/ferreirajose/orla-d",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
