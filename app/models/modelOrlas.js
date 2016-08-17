@@ -1,5 +1,5 @@
 var mongoose = require('mongoose'),
-	Schema = mongoose.Schema
+    Schema = mongoose.Schema
 
 module.exports = function (app) {
 	var orlaSchema = Schema({

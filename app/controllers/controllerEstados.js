@@ -1,10 +1,8 @@
 module.exports = function (app) {
 
     var Estado = app.models.modelEstados;
-    var Cidade = app.models.modelCidades;
-	var Orla = app.models.modelOrlas;
-
     var controllerEstados = {};
+
 
     controllerEstados.listarTodosEstados = function(req, res){
         estado.find().exec().then(function (contato) {
@@ -15,10 +13,6 @@ module.exports = function (app) {
         });
     };
 
-    controllerEstados.listaById = function(req, res){
-        res.json('listaById');
-        console.log('listaById')
-    };
 
     controllerEstados.salvarEstado = function (req, res) {
         var estado = req.body.estado_nome;
@@ -39,6 +33,12 @@ module.exports = function (app) {
         console.log(count._id);
     }); 
         
+
+    Estados = {
+       "estado_nome": 'paraiba',
+       "cidade_nome": [{"cidade_nome": 'joao pessoa'}],
+       "orla_nome": [{"orla_nome": 'bessa'}]
+    };
 
         // Cidade.save(function(err, cidade){
         //     if (err) return res.json(err);
