@@ -1,44 +1,79 @@
 module.exports = function (app) {
 
     var Estado = app.models.modelEstados;
+    var Cidade = app.models.modelCidades;
     var controllerEstados = {};
 
 
     controllerEstados.listarTodosEstados = function(req, res){
-        estado.find().exec().then(function (contato) {
-            res.json(contato._id);
+        Estado.find().exec().then(function (estado) {
+            res.json(estado);
         }, function (erro) {
             console.error(erro);
             res.status(500).json(erro);
         });
     };
 
+    var findCollection = function(){
+        var promise = Estado.find().exec().then(function (estado) {
+            
+        }, function (erro) {
+            console.error(erro);
+        });
+       
+       return promise;
+    }
 
     controllerEstados.salvarEstado = function (req, res) {
-        var estado = req.body.estado_nome;
-        var cidade = req.body.cidade_nome;
-        var orla = req.body.orla_nome;
-        //console.log('estado: '+ estado + '\n' + ' cidade: '+ cidade);
+        console.log(findCollection());
+        var estado = req.body;
 
-        estado = new Estado({
-            estado_nome: req.body.estado_nome
-        });
+        var patt = /para(i|í)ba/i;
+        var r = patt.test(estado);
+         // Cidade.create({cidade_nome: cidade, cidade_reference: [Estado._id]}, function(err, data){
+         //            if (err) return res.json(err);
+         //            res.status(201).json(estado);
+         //       }); 
+        // cidade = new Cidade({
+        //     cidade_nome: req.body.cidade_nome
+        //     cidade_reference: [Estado._id];
+        // });
 
-        estado.save(function(err, estado){
-            if (err) return res.json(err);
-            res.status(201).json(estado);
-        });
+        Estado.create(estado)
+            .then(function (estado) {
+                Cidade.create({cidade_nome: req.body.cidade_nome, estado_reference: estado._id}, function(err, data){
+                    if (err) return res.json(err);
+                    res.status(201).json(estado);
+               }); 
+                res.status(201).json(estado);
+            }, function (erro) {
+                console.log(erro);
+                res.status.json(erro);
+            });
 
-        Estado.count({_id: estado._id}, function (err, count){ 
-        console.log(count._id);
-    }); 
+            // var estado = req.body.estado_nome;
+        // var cidade = req.body.cidade_nome;
+        // var orla = req.body.orla_nome;
+        // //console.log('estado: '+ estado + '\n' + ' cidade: '+ cidade);
+
+        // estado = new Estado({
+        //     estado_nome: req.body.estado_nome
+        // });
+
+        // estado.save(function(err, estado){
+        //     if (err) return res.json(err);
+        //     res.status(201).json(estado);
+        // });
+
+        // Estado.count({_id: estado._id}, function (err, count){ 
+        // console.log(count._id);
         
 
-    Estados = {
-       "estado_nome": 'paraiba',
-       "cidade_nome": [{"cidade_nome": 'joao pessoa'}],
-       "orla_nome": [{"orla_nome": 'bessa'}]
-    };
+    // Estados = {
+    //    "estado_nome": 'paraiba',
+    //    "cidade_nome": [{"cidade_nome": 'joao pessoa'}],
+    //    "orla_nome": [{"orla_nome": 'bessa'}]
+    // };
 
         // Cidade.save(function(err, cidade){
         //     if (err) return res.json(err);
@@ -49,7 +84,9 @@ module.exports = function (app) {
         //     if (err) return res.json(err);
         //     return res.json(orla);
         // });
-
+        // estado = req.body.estado
+        // var a = /estado/i
+        // a.test();
         // Estado.create(estado, function(erro, c, o){
         //        Cidade.create({cidade_nome: cidade, cidade_reference: [Estado._id]}, function(err, data){
         //             if (err) return res.json(err);
@@ -83,7 +120,7 @@ module.exports = function (app) {
         res.json('removerEstado');
         console.log('removerEstado')
     };
-// 
+
     return controllerEstados;
 
 }

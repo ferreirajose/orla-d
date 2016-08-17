@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
 module.exports = function (app) {
 	var cidadeSchema = Schema({
 		cidade_nome: String,
-		cidade_reference: {
+		estado_reference: {
 	        type: Schema.Types.ObjectId,
 	        ref: 'Estados'
     	}
