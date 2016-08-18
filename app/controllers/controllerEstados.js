@@ -1,3 +1,4 @@
+var colors = require("colors");
 module.exports = function (app) {
 
     var Estado = app.models.modelEstados;
@@ -6,26 +7,48 @@ module.exports = function (app) {
 
 
     controllerEstados.listarTodosEstados = function(req, res){
-        Estado.find().exec().then(function (estado) {
-            res.json(estado);
-        }, function (erro) {
-            console.error(erro);
-            res.status(500).json(erro);
-        });
+        console.log(findCollection());
+
+        // Estado.find().exec().then(function (estado) {
+        //     res.json(estado);
+        // }, function (erro) {
+        //     console.error(erro);
+        //     res.status(500).json(erro);
+        // });
     };
 
     var findCollection = function(){
-        var promise = Estado.find().exec().then(function (estado) {
+        // var promise = Estado.query().exec().then(function (estado) {
+        // var promise = Estado.find().exec(function (err, estado) {
             
-        }, function (erro) {
-            console.error(erro);
+        // }, function (erro) {
+        //     console.error(erro);
+        // });
+
+        var promise = Estado.find().exec();
+
+        promise.then(function(user) {
+          return user;
+        })
+        .then(function(user) {
+          //console.log('Estado : ' + user._id);
+           user.forEach(function(jedi){
+                // console.log(jedi.name);
+                console.log(colors.green(jedi.estado_nome));
+            });
+          //console.log(colors.green('Estado : ' + user));
+          // do something with updated user
+        })
+        .catch(function(err){
+          // just need one of these
+          console.log('error:', err);
         });
        
        return promise;
     }
 
     controllerEstados.salvarEstado = function (req, res) {
-        console.log(findCollection());
+        
         var estado = req.body;
 
         var patt = /para(i|í)ba/i;

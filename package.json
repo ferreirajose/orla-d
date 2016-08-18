@@ -20,5 +20,8 @@
     "method-override": "^2.3.6",
     "mongodb": "^2.2.5",
     "mongoose": "^4.5.7"
+  },
+  "optionalDependencies": {
+    "colors": "^1.1.2"
   }
 }

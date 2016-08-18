@@ -1,0 +1,33 @@
+
+var estados = {
+  estado:[estados],
+  cidade: [cidades],
+  orla:[orlas]
+}
+
+var estados = {"estado": 'Paraíba'}
+var cidades = {"estado": 'João Pessoa'}
+var orlas = {"nome": 'Tambau'}
+
+
+db.createCollection("estados")
+
+
+579a7fb41b45a2f1a02ce41c = estado = paraiba
+579a80aa54b7284a722425f8 = cabedelo = cidade
+
+
+"$ref": "cidades",
+"$id": ObjectId("579a80aa54b7284a722425f8"),
+"$db": "beachdb"
+
+
+
+"$ref": "estado",
+"$id": ObjectId("579a7fb41b45a2f1a02ce41c"),
+"$db": "beachdb"
+
+
+mongoexport -h 127.0.0.1 -d beachdb -c estados -o C:\wamp\estados.json --pretty 
+mongoexport -h 127.0.0.1 -d beachdb -c cidades -o C:\wamp\cidades.json --pretty 
+mongoexport -h 127.0.0.1 -d beachdb -c orlas -o C:\wamp\orlas.json --pretty 
