@@ -4,10 +4,7 @@ var mongoose = require('mongoose'),
 module.exports = function (app) {
 	var cidadeSchema = Schema({
 		cidade_nome: String,
-		estado_reference: {
-	        type: Schema.Types.ObjectId,
-	        ref: 'Estados'
-    	}
+		estado_reference: [{ type: Schema.Types.ObjectId, ref: 'Estados'}]
 	});
 
 	mongoose.set("debug", true);

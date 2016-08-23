@@ -3,7 +3,10 @@ var mongoose = require('mongoose'),
 
 module.exports = function (app) {
     var estadoSchema = Schema({
-        estado_nome: String,
+        estado_nome: {
+	        type :String,
+	        unique : true
+    	}
     });
 
     mongoose.set("debug", true);
