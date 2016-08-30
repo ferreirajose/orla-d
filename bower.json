@@ -20,6 +20,10 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "^3.3.7"
-  }
+    "bootstrap": "^3.3.7",
+    "datatables.net": "^1.10.12",
+    "font-awesome": "^4.6.3",
+    "animate.css": "^3.5.2"
+  },
+  "devDependencies": {}
 }

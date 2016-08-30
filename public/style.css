@@ -4,3 +4,10 @@
 .col-lg-4 img{
   width: 100%;
 }
+
+.bg{
+	width: 100%;
+	min-height: 500px;
+	background-repeat: no-repeat;
+	background-size: cover;
+}

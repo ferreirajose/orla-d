@@ -5531,6 +5531,11 @@ ul li a:focus {
 
 /*===========Modal============*/
 
+.modal-header,
+.modal-footer{
+    background: #e5e5e5;
+}
+
 .modal-v1 .modal-header,
 .modal-v1 .modal-footer,
 .modal-v2 .modal-header,

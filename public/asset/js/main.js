@@ -334,6 +334,15 @@
     });
 
 
+    $(".nav-tabs a").click(function (e) {
+      e.preventDefault();  
+      $(this).tab('show');
+    });
+
+    if ($('#datatables-example').length > 0) {
+        $('#datatables-example').DataTable();
+    }
+
     $("body").tooltip({ selector: '[data-toggle=tooltip]' });
     leftMenu();
     rightMenu();
